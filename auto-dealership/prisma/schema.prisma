@@ -1,0 +1,114 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Brand {
+  id        Int        @id @default(autoincrement())
+  name      String     @unique
+  country   String?
+  models    CarModel[]
+  createdAt DateTime   @default(now())
+}
+
+model CarModel {
+  id            Int            @id @default(autoincrement())
+  name          String
+  year          Int?
+  brandId       Int
+  brand         Brand          @relation(fields: [brandId], references: [id])
+  configurations Configuration[]
+}
+
+model Configuration {
+  id          Int    @id @default(autoincrement())
+  name        String
+  engine      String?
+  transmission String?
+  power       Int?
+  basePrice   Decimal @db.Decimal(12, 2)
+
+  modelId     Int
+  model       CarModel @relation(fields: [modelId], references: [id])
+  cars        Car[]
+}
+
+model Car {
+  id              Int       @id @default(autoincrement())
+  vin             String    @unique
+  color           String
+  productionYear  Int
+  price           Decimal   @db.Decimal(12, 2)
+  status          CarStatus @default(AVAILABLE)
+
+  configurationId Int
+  configuration   Configuration @relation(fields: [configurationId], references: [id])
+  sale            Sale?
+}
+
+model Client {
+  id        Int      @id @default(autoincrement())
+  firstName String
+  lastName  String
+  phone     String   @unique
+  email     String?  @unique
+  address   String?
+  sales     Sale[]
+  createdAt DateTime @default(now())
+}
+
+model Sale {
+  id          Int        @id @default(autoincrement())
+  saleDate    DateTime   @default(now())
+  finalPrice  Decimal    @db.Decimal(12, 2)
+  paymentType PaymentType
+  clientId    Int
+  carId       Int        @unique
+
+  client      Client     @relation(fields: [clientId], references: [id])
+  car         Car        @relation(fields: [carId], references: [id])
+  options     SaleOption[]
+}
+
+model Option {
+  id          Int          @id @default(autoincrement())
+  name        String       @unique
+  description String?
+  price       Decimal      @db.Decimal(12, 2)
+  saleOptions SaleOption[]
+}
+
+model SaleOption {
+  saleId   Int
+  optionId Int
+  quantity Int      @default(1)
+  price    Decimal  @db.Decimal(12, 2)
+
+  sale   Sale   @relation(fields: [saleId], references: [id], onDelete: Cascade)
+  option Option @relation(fields: [optionId], references: [id])
+
+  @@id([saleId, optionId])
+}
+
+enum CarStatus {
+  AVAILABLE
+  RESERVED
+  SOLD
+  SERVICE
+}
+
+enum PaymentType {
+  CASH
+  CARD
+  CREDIT
+  LEASING
+}

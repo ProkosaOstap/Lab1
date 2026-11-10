@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Продажі</title>
+
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="/">Головна</a>
+  <a href="/cars.html">Автомобілі</a>
+  <a href="/clients.html">Клієнти</a>
+  <a href="/configurations.html">Комплектації</a>
+  <a href="/sales.html">Продажі</a>
+</nav>
+
+<main class="container">
+  <h1>Продажі</h1>
+
+  <div id="message"></div>
+
+  <section class="panel">
+    <h2>Оформити продаж</h2>
+
+    <form id="saleForm" class="form">
+
+      <label>
+        Клієнт
+        <select id="clientSelect" name="clientId" required>
+          <option value="">
+            Оберіть клієнта
+          </option>
+        </select>
+      </label>
+
+      <label>
+        Автомобіль
+        <select id="vehicleSelect" name="vehicleId" required>
+          <option value="">
+            Оберіть автомобіль
+          </option>
+        </select>
+      </label>
+
+      <label>
+        Комплектація
+        <select
+          id="saleConfigurationSelect"
+          name="configurationId"
+          required
+        >
+          <option value="">
+            Оберіть комплектацію
+          </option>
+        </select>
+      </label>
+
+      <label>
+        Ціна автомобіля
+        <input
+          id="vehiclePrice"
+          type="text"
+          placeholder="Розраховується автоматично"
+          readonly
+        >
+      </label>
+
+      <label>
+        Ціна комплектації
+        <input
+          id="configurationPrice"
+          type="text"
+          placeholder="Розраховується автоматично"
+          readonly
+        >
+      </label>
+
+      <label>
+        Фінальна ціна
+        <input
+          id="finalPrice"
+          name="finalPrice"
+          type="number"
+          placeholder="Розраховується автоматично"
+          readonly
+          required
+        >
+      </label>
+
+      <label>
+        Спосіб оплати
+        <select name="paymentType" required>
+          <option value="cash">Готівка</option>
+          <option value="card">Банківська картка</option>
+          <option value="credit">Кредит</option>
+          <option value="leasing">Лізинг</option>
+        </select>
+      </label>
+
+      <label>
+        Статус продажу
+        <select name="status">
+          <option value="created">Створений</option>
+          <option value="paid">Оплачений</option>
+          <option value="cancelled">Скасований</option>
+        </select>
+      </label>
+
+      <button
+        type="submit"
+        class="button primary"
+      >
+        Оформити продаж
+      </button>
+
+    </form>
+  </section>
+
+  <section class="panel">
+    <h2>Список продажів</h2>
+
+    <div id="salesList">
+      Завантаження...
+    </div>
+  </section>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>

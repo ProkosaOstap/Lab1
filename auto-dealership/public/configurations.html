@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Комплектації</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="/">Головна</a>
+  <a href="/cars.html">Автомобілі</a>
+  <a href="/clients.html">Клієнти</a>
+  <a href="/configurations.html">Комплектації</a>
+  <a href="/sales.html">Продажі</a>
+</nav>
+
+<main class="container">
+  <h1>Комплектації</h1>
+
+  <div id="message"></div>
+
+  <section class="panel">
+    <h2>Додати комплектацію</h2>
+
+    <form id="configurationForm" class="form">
+      <label>
+        Назва комплектації
+        <input name="name" placeholder="Наприклад: Premium" required>
+      </label>
+
+      <label>
+        Двигун
+        <input name="engine" placeholder="Наприклад: 2.5 бензин" required>
+      </label>
+
+      <label>
+        Коробка передач
+        <input name="transmission" placeholder="Наприклад: Автомат" required>
+      </label>
+
+      <label>
+        Тип пального
+        <input name="fuelType" placeholder="Наприклад: Бензин" required>
+      </label>
+
+      <label>
+        Базова ціна
+        <input name="basePrice" type="number" step="0.01" placeholder="Наприклад: 30000" required>
+      </label>
+
+      <label>
+        Модель автомобіля
+        <select name="carModelId" id="modelSelect" required>
+          <option value="">Оберіть модель</option>
+        </select>
+      </label>
+
+      <button class="button primary">Додати комплектацію</button>
+    </form>
+  </section>
+
+  <section class="panel">
+    <h2>Список комплектацій</h2>
+    <div id="configurationsList"></div>
+  </section>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>

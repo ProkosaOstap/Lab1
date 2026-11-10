@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Автомобілі</title>
+
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="/">Головна</a>
+  <a href="/cars.html">Автомобілі</a>
+  <a href="/clients.html">Клієнти</a>
+  <a href="/configurations.html">Комплектації</a>
+  <a href="/sales.html">Продажі</a>
+</nav>
+
+<main class="container">
+  <h1>Автомобілі</h1>
+
+  <div id="message"></div>
+
+  <section class="panel">
+    <h2>Додати автомобіль</h2>
+
+    <form id="vehicleForm" class="form">
+
+      <label>
+        Марка автомобіля
+        <select id="brandSelect" required>
+          <option value="">Оберіть марку</option>
+        </select>
+      </label>
+
+      <label>
+        Модель автомобіля
+        <select
+          id="modelSelect"
+          name="modelId"
+          required
+          disabled
+        >
+          <option value="">
+            Спочатку оберіть марку
+          </option>
+        </select>
+      </label>
+
+      <label>
+        Комплектація
+        <select
+          id="configurationSelect"
+          name="configurationId"
+          required
+          disabled
+        >
+          <option value="">
+            Спочатку оберіть модель
+          </option>
+        </select>
+      </label>
+
+      <label>
+        Колір
+        <input
+          name="color"
+          placeholder="Наприклад: Чорний"
+          required
+        >
+      </label>
+
+      <label>
+        Рік виробництва
+        <input
+          name="productionYear"
+          type="number"
+          placeholder="Наприклад: 2024"
+          required
+        >
+      </label>
+
+      <label>
+        Ціна автомобіля
+        <input
+          name="price"
+          type="number"
+          step="0.01"
+          placeholder="Наприклад: 25000"
+          required
+        >
+      </label>
+
+      <label>
+        Статус
+        <select name="status">
+          <option value="available">
+            В наявності
+          </option>
+
+          <option value="reserved">
+            Зарезервований
+          </option>
+
+          <option value="sold">
+            Проданий
+          </option>
+        </select>
+      </label>
+
+      <button
+        type="submit"
+        class="button primary"
+      >
+        Додати автомобіль
+      </button>
+
+    </form>
+  </section>
+
+  <section class="panel">
+    <h2>Список автомобілів</h2>
+
+    <div id="vehiclesList">
+      Завантаження...
+    </div>
+  </section>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Клієнти</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="/">Головна</a>
+  <a href="/cars.html">Автомобілі</a>
+  <a href="/clients.html">Клієнти</a>
+  <a href="/configurations.html">Комплектації</a>
+  <a href="/sales.html">Продажі</a>
+</nav>
+
+<main class="container">
+  <h1>Клієнти</h1>
+
+  <div id="message"></div>
+
+  <section class="panel">
+    <h2>Додати клієнта</h2>
+
+    <form id="clientForm" class="form">
+      <label>
+        Ім’я
+        <input name="firstName" placeholder="Наприклад: Іван" required>
+      </label>
+
+      <label>
+        Прізвище
+        <input name="lastName" placeholder="Наприклад: Петренко" required>
+      </label>
+
+      <label>
+        Телефон
+        <input name="phone" placeholder="Наприклад: +380991112233" required>
+      </label>
+
+      <label>
+        Email
+        <input name="email" type="email" placeholder="Наприклад: ivan@gmail.com">
+      </label>
+
+      <label>
+        Адреса
+        <input name="address" placeholder="Наприклад: м. Київ">
+      </label>
+
+      <button class="button primary">Додати клієнта</button>
+    </form>
+  </section>
+
+  <section class="panel">
+    <h2>Список клієнтів</h2>
+    <div id="clientsList"></div>
+  </section>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>
